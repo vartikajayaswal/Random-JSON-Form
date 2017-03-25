@@ -1,0 +1,83 @@
+.wrapper1{
+	padding: 20px;
+    background-color: #658384;
+    color: white;
+}
+
+.wrapperSubmit{
+    display: block;
+}
+
+.wrapperCapture{
+    display: block;
+    margin-left: 500px;
+    margin-top: -56px;
+}
+
+.wrapper2{
+	padding: 30px;
+    color: black;
+    
+}
+
+.labelHeader{
+    margin-bottom: 5px;
+    margin-top: 5px;
+    color: white;
+    padding: 2px!important;
+    padding-left: 3%!important;
+    font-weight: bold;
+    background-color:#658384;
+}
+
+.label{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 1%;
+    font-weight: 700;
+    padding-left: 3%!important;
+    padding-top: 1%!important;
+    
+}
+
+.labelInput{
+    background-color: white;
+    padding-left: 3%!important;
+    padding-top: 1%!important;
+}
+
+.labelBorder{
+    border: 3px solid #658384;
+}
+
+textarea{
+    color : black!important;
+}
+
+.md-checkbox {
+  margin: 8px;
+  cursor: pointer;
+  padding-left: 18px;
+  padding-right: 0;
+  line-height: 26px;
+  min-width: 18px;
+  min-height: 18px;
+}
+
+input[type=submit] {
+    padding:5px 15px; 
+    background:#e9e9e9; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}
+
+input[type=button] {
+    padding:5px 15px; 
+    background:#e9e9e9; 
+    border:0 none;
+    cursor:pointer;
+    -webkit-border-radius: 5px;
+    border-radius: 5px; 
+}

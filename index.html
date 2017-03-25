@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <title>AutoForm generation</title>
+  </head>
+  <body ng-app="randomForm" style="background-color:#fff">
+    <main ng-controller="formController">
+      <div class="wrapper1">
+        <h2 style="text-align:center">Render JSON Form in Angular JS</h2>
+        <h5 style="text-align:center">Form Name : {{key.val.form_name}}</h5>
+        <h5 style="text-align:center">Form ID : {{key.val.form_id}}</h5>
+      </div>
+      <div class="wrapper2">
+        <div class="col-md-4">
+          <div class="wrapper1">
+            <section>
+              <div >
+                <label>Random Form in JSON Format :</label><br>
+                <textarea style="width:100%;height:30em">{{key.val.field}}</textarea>
+                <input type="button" ng-click="click()" value="Get Form" style="color:black"\>
+              </div>
+            </section>
+          </div>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <form id="val" name="'{{key.val.form_name}}'" id="{{key.val.form_id}}" ng-submit="submit()" >
+            <div class="labelBorder">
+              <div ng-repeat="field in key.val.form_fields">
+                <div ng-switch on="field.component">
+                  <div class="labelHeader">
+                    <label>{{field.label}}</label>
+                  </div>
+                  <div ng-switch-when="textarea" class="labelInput">
+                    <textarea name="field.label" ng-disabled="!field.editable">{{field.autofill}}</textarea>
+                  </div>
+                  <div ng-switch-when="textinput" class="labelInput">
+                    <input type="text" name="field.label" placeholder="{{field.autofill}}" value="{{field.autofill}}" pattern="{{field.validation}}" ng-required="field.required" ng-disabled="!field.editable"/>
+                  </div>
+                  <div ng-switch-when="select" class="labelInput">
+                    <select name="{{field.label}}">
+                      <option ng-repeat="val in field.options track by $index" ng-selected="field.autoselect.indexOf(val)>-1">{{val}}</option>
+                    </select>
+                  </div>
+                  <div ng-switch-when="checkbox" class="labelInput">
+                    <div ng-repeat="checkField in field.options">
+                      <input type="checkbox" name="field.label" ng-value="checkField" ng-checked="field.autoselect.indexOf(checkField)>-1"  ng-required="field.required" ng-disabled="!field.editable"/>{{checkField}}
+                    </div>
+                  </div>
+                  <div ng-switch-when="radio" class="labelInput">
+                    <div ng-repeat="val in field.options track by $index">
+                      <input type="radio" name="{{field.label}}" value="{{val}}" ng-value="val" ng-checked="field.autoselect.indexOf(val)>-1" ng-required="field.required" ng-disabled="!field.editable"/>{{val}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class= "wrapper1"><input type="submit" value="Submit" style="color:black"/></div>
+            </div>
+          </form>
+          <br>
+        </div>
+        <div class="col-md-4">
+          <div class="wrapper1">
+            <section>
+              <div >
+                <label>Response Captured After Form Submission :</label><br>
+                <textarea style="width:100%;height:30em">{{key.capture}}</textarea>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
