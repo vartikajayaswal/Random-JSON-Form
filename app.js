@@ -1,13 +1,6 @@
 var app = angular.module('randomForm',[]);
 
 app.controller("formController",['$scope','$http', function($scope,$http){
-//    $scope.key = {};
-//    $http.get('https://randomform.herokuapp.com/').then(function(response){
-//        $scope.key.val = response.data.data;
-//        var str = JSON.stringify(response.data.data, null, 2);
-//        $scope.key.val.field = str;
-//    });
-    debugger;
     $scope.click= function(){
         $scope.key = {};
     $http.get('https://randomform.herokuapp.com/').then(function(response){
